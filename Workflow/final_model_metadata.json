@@ -1,0 +1,27 @@
+{
+    "model_name": "Logistic Regression",
+    "model_type": "Binary Classification",
+    "target": "Survived",
+    "positive_class": 1,
+    "features": [
+        "Pclass",
+        "Age",
+        "SibSp",
+        "Sex_female",
+        "Cabin_encoded"
+    ],
+    "selected_threshold": 0.45,
+    "hyperparameters": {
+        "C": 1,
+        "Solver": "liblinear",
+        "Class_Weight": "Balanced",
+        "random_state": 42
+    },
+    "evaluation_summary": {
+        "test_accuracy": 0.8246,
+        "test_precision": 0.7807,
+        "test_racll": 0.8018,
+        "test_f1_score": 0.7911,
+        "selected_threshold": 0.45
+    }
+}
