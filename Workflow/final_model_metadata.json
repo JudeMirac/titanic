@@ -13,15 +13,16 @@
     "selected_threshold": 0.45,
     "hyperparameters": {
         "C": 1,
-        "Solver": "liblinear",
-        "Class_Weight": "Balanced",
-        "random_state": 42
+        "random_state": 42,
+        "solver": "liblinear",
+        "class_weight": "balanced",
+        "penalty": "l1"
     },
     "evaluation_summary": {
         "test_accuracy": 0.8246,
         "test_precision": 0.7807,
-        "test_racll": 0.8018,
         "test_f1_score": 0.7911,
-        "selected_threshold": 0.45
+        "selected_threshold": 0.45,
+        "test_recall": 0.8018
     }
 }
