@@ -45,21 +45,32 @@ Workflow/
 │   └── target.csv
 │
 ├── Notebooks/
-│   ├── EDA.ipynb
-│   ├── Feature_Testing.ipynb
-│   ├── Hypothesis_Testing.ipynb
-│   ├── Modeling.ipynb
-│   └── Model_evaluation.ipynb
+│   ├── 01_EDA.ipynb
+│   ├── 02_Feature_engineer_testing.ipynb
+│   ├── 03_Hypothesis_Testing.ipynb
+│   ├── 04_Modeling.ipynb
+│   ├── 05_Model_Evaluation.ipynb
+│   └── 06_Final_Model.ipynb
 │
-├── Models/
-│   ├── final_logistic_regression_model.pkl
-│   └── final_model_metadata.json
-│
+├── Final_Model.pkl
+├── final_model_metadata.json
 └── Scripts/
-    └── train_final_model.py
+    ├── evaluate_raw.py
+    └── requirements-evaluation.txt
 ```
 
-Note: The `Models/` and `Scripts/` folders represent the recommended final production structure for saving the trained model and related metadata.
+## Reproducible raw-data evaluation
+
+The original notebooks preprocess and select features before later train/test splits. Their reported metrics are historical results, not a verified leakage-controlled benchmark. The saved model and its historical metric values are preserved.
+
+The separate evaluator splits raw rows first and fits imputation, scaling, and categorical/target encoding on training rows only. It uses the documented model settings and a fixed threshold; it does not overwrite the saved model or metadata.
+
+```bash
+python -m pip install -r Workflow/Scripts/requirements-evaluation.txt
+python Workflow/Scripts/evaluate_raw.py
+```
+
+Do not tune the threshold from this run's test scores. Because the model and threshold were previously selected using this dataset, a genuinely independent performance estimate still requires untouched data or nested validation. Record new results only after actually running the evaluator.
 
 ---
 
